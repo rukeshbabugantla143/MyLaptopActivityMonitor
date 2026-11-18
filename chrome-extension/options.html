@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Activity Monitor – Websites</title>
+<style>
+  :root { color-scheme: dark; }
+  body { font: 13px/1.5 "Segoe UI", system-ui, sans-serif; background: #07090f; color: #e7ebf3; margin: 0; padding: 18px; min-width: 340px; max-width: 520px; }
+  h1 { font-size: 15px; margin: 0 0 2px; } .mute { color: #8a93a8; font-size: 12px; }
+  .card { border: 1px solid #1f2636; background: #0e121b; border-radius: 12px; padding: 12px 14px; margin-top: 12px; }
+  label { display: block; margin: 8px 0 4px; color: #8a93a8; font-size: 12px; }
+  select, input[type=text] { width: 100%; box-sizing: border-box; background: #141926; color: #e7ebf3; border: 1px solid #1f2636; border-radius: 8px; padding: 7px 9px; }
+  button { background: #7c9cff; color: #0a0f1f; border: 0; border-radius: 8px; padding: 7px 12px; font-weight: 600; cursor: pointer; margin-top: 10px; }
+  button.ghost { background: #141926; color: #e7ebf3; border: 1px solid #1f2636; }
+  .row { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .ok { color: #4ade80; } .bad { color: #f87171; } .warn { color: #fbbf24; }
+  code { font-size: 11px; color: #8a93a8; }
+</style>
+</head>
+<body>
+  <h1>Activity Monitor – Websites</h1>
+  <div class="mute">Local website tracking for this Chrome profile. Domains only, sent to 127.0.0.1 only.</div>
+
+  <div class="card">
+    <div class="row"><b>Connection</b><span id="conn" class="mute">checking…</span></div>
+    <div id="detail" class="mute"></div>
+    <button id="test" class="ghost">Test connection now</button>
+  </div>
+
+  <div class="card">
+    <b>This Chrome profile</b>
+    <label for="preset">Profile name</label>
+    <select id="preset">
+      <option value="">— choose —</option>
+      <option>Personal</option><option>College</option><option>Work</option><option>Other</option>
+      <option value="__custom">Custom…</option>
+    </select>
+    <input id="custom" type="text" placeholder="Custom name" maxlength="40" style="display:none;margin-top:6px">
+    <button id="save">Save name</button>
+    <div id="saved" class="mute"></div>
+    <div class="mute" style="margin-top:8px">Profile ID: <code id="pid"></code></div>
+  </div>
+
+  <div class="card">
+    <div class="row"><b>Track websites in this profile</b><input id="enabled" type="checkbox"></div>
+    <div class="mute">Also controllable per profile on the dashboard's Profiles page.</div>
+  </div>
+
+  <div class="card mute">
+    Recorded: the domain of the active tab (e.g. <i>youtube.com</i>) and how long it was active while Chrome is the
+    foreground app and you are not idle or locked. Never recorded: full URLs, paths, searches, page content, passwords,
+    form data, keystrokes, screenshots, incognito tabs.
+    <div style="margin-top:6px"><a href="http://127.0.0.1:3939/websites" target="_blank" style="color:#7c9cff">Open the Websites dashboard</a></div>
+  </div>
+<script src="options.js"></script>
+</body>
+</html>

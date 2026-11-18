@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Activity Monitor – Websites",
+  "version": "1.1.0",
+  "description": "Records the domain of your active Chrome tab (domain only) to your own local Activity Monitor at 127.0.0.1:3939. Nothing leaves your PC.",
+  "permissions": [
+    "tabs",
+    "idle",
+    "storage",
+    "alarms"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:3939/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Activity Monitor – Websites",
+    "default_popup": "options.html",
+    "default_icon": {
+      "16": "icon-16.png",
+      "48": "icon-48.png"
+    }
+  },
+  "options_page": "options.html",
+  "incognito": "not_allowed",
+  "minimum_chrome_version": "116",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAt+H+EvN2V9MSGx+ninkJATB3a77mAtKxfWmew9pnmxZ5HdHIoEV1Ejva0EcTZRbSM7ONgJg4YdrEZ+AMehMLzlq8ZYGgSFnC5ZCdK/66XYxUiDr5HTT+Qqtl4GujXIxZnjllkjN6yhbcHmoS8krxD/p2+lApUR3wWzG6gFa1TcDIaBJRvXXu8GhhH7NFUSuzakUbV8doVsxwvqjtd68FdUHuUu26tCGVIt2H2xt7XxtXp8A1b7ASbhpiRMppx9oDoEcARxhNChMZ5j+Jt4B+wV1tJoCC2rMnL4wJr/kdpWsV6ybhspTGa10veSOfdqC+wftpuJWwBJLRIbNxRjQ1eQIDAQAB",
+  "icons": {
+    "16": "icon-16.png",
+    "48": "icon-48.png",
+    "128": "icon-128.png"
+  }
+}

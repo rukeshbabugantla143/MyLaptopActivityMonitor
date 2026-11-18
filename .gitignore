@@ -1,0 +1,11 @@
+node_modules/
+.next/
+__pycache__/
+*.pyc
+*.log
+*.db
+*.db-wal
+*.db-shm
+*.pem
+installed.json
+dashboard/tsconfig.tsbuildinfo
