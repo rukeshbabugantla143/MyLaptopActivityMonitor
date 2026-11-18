@@ -18,6 +18,8 @@ $pyw = Join-Path (Split-Path $py) 'pythonw.exe'
 if (-not (Test-Path $pyw)) { throw "pythonw.exe not found next to $py" }
 & python -c "import psutil" 2>$null; if ($LASTEXITCODE) { throw "Python package psutil missing: run  pip install psutil" }
 if (-not (Get-Command node -ErrorAction SilentlyContinue)) { throw "Node.js not found" }
+# Refuse when AppData writes are redirected (started from inside a packaged app): the install would be invisible to Windows.
+& python (Join-Path $PSScriptRoot 'check_redirect.py'); if ($LASTEXITCODE -eq 3) { throw "Install aborted: AppData is redirected. Double-click INSTALL-APP.bat from File Explorer." }
 
 Say "Installing from $Src to $Dst"
 $hadTask = [bool](Get-ScheduledTask -TaskName 'My Laptop Activity Monitor' -ErrorAction SilentlyContinue)

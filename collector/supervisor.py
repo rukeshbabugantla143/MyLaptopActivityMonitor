@@ -126,6 +126,16 @@ def pythonw():
 
 def open_app_window():
     """Open the dashboard as a standalone app window (no tabs / address bar), like an installed app."""
+    # Prefer the dashboard installed as a Chrome/Edge web app: it gets its own taskbar icon (our logo).
+    progs = os.path.join(os.environ.get("APPDATA", ""), r"Microsoft\\Windows\\Start Menu\\Programs")
+    for folder in ("Chrome Apps", "Edge Apps", ""):
+        lnk = os.path.join(progs, folder, "Activity Monitor.lnk") if folder else None
+        if lnk and os.path.exists(lnk):
+            try:
+                os.startfile(lnk)
+                return
+            except OSError as e:
+                log(f"opening installed web app failed: {e}")
     candidates = [
         os.path.join(os.environ.get("ProgramFiles", ""), r"Google\Chrome\Application\chrome.exe"),
         os.path.join(os.environ.get("ProgramFiles(x86)", ""), r"Google\Chrome\Application\chrome.exe"),
